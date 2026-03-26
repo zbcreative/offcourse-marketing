@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+title: "Report a bug | Offcourse golf practice app"
+description: "Report a problem in the Offcourse golf practice app. Send steps to reproduce through your email client so we can fix it faster."
+permalink: /report-a-bug/index.html
+canonicalUrl: "https://offcourse.app/report-a-bug/"
+---
+
+<h1 class="page-title">Report a bug</h1>
+<p class="page-intro">The more detail you give, the faster we can fix it. This form opens an email with your answers. You need a mail app set up on this device.</p>
+
+<form id="bug-form" class="form-stack">
+  <div class="form-field">
+    <label for="bug-name">Name (optional)</label>
+    <input type="text" id="bug-name" name="name" autocomplete="name">
+  </div>
+  <div class="form-field">
+    <label for="bug-email">Email</label>
+    <input type="email" id="bug-email" name="email" required autocomplete="email">
+  </div>
+  <div class="form-field">
+    <label for="bug-device">Device and OS</label>
+    <input type="text" id="bug-device" name="device" required placeholder="e.g. iPhone 15, iOS 18.3">
+  </div>
+  <div class="form-field">
+    <label for="bug-where">Where in the app?</label>
+    <input type="text" id="bug-where" name="where" required placeholder="Screen or flow">
+  </div>
+  <div class="form-field">
+    <label for="bug-steps">What happened? Steps to reproduce</label>
+    <textarea id="bug-steps" name="steps" required placeholder="1. Open… 2. Tap… 3. Expected… Actual…"></textarea>
+  </div>
+  <button type="submit" class="btn-submit">Open email</button>
+</form>
+<p class="form-note-bottom">If the app crashes, include roughly when it happened and what you were doing right before.</p>
+
+<script>
+(function () {
+  var form = document.getElementById('bug-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('bug-name').value.trim();
+    var email = document.getElementById('bug-email').value.trim();
+    var device = document.getElementById('bug-device').value.trim();
+    var where = document.getElementById('bug-where').value.trim();
+    var steps = document.getElementById('bug-steps').value.trim();
+    var body = 'Bug report for Offcourse\n\n';
+    if (name) body += 'Name: ' + name + '\n';
+    body += 'Email: ' + email + '\n';
+    body += 'Device / OS: ' + device + '\n';
+    body += 'Where: ' + where + '\n\n';
+    body += steps;
+    window.location.href = 'mailto:hello@tryoffcourse.app?subject=' + encodeURIComponent('Bug report: Offcourse') + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>

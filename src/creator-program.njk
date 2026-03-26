@@ -1,0 +1,83 @@
+---
+layout: layouts/base.njk
+title: "Creator program | Partner with Offcourse golf practice app"
+description: "Partner with Offcourse, the golf practice app for players who track training and want to improve. Early access and a direct line for golf creators on YouTube, Reels, TikTok, and more."
+permalink: /creator-program/index.html
+canonicalUrl: "https://offcourse.app/creator-program/"
+---
+
+<h1 class="page-title">Creator program</h1>
+<p class="page-intro">We built Offcourse for golfers who care about the game on and off the course. The creator program is for anyone who makes golf content, at any audience size, on any platform. YouTube long form, Instagram Reels, TikTok, Shorts, podcasts, newsletters, or a mix. If golf is what you talk about, you belong here.</p>
+
+<div class="legal-prose">
+  <h2>Who it is for</h2>
+  <p>You create videos or media about golf. That might be course vlogs, swing tips, gear reviews, comedy, travel, instruction, practice logs, or something else entirely. We are not looking only for “practice only” creators. Small account or large, we care that you show up authentically and are willing to give straight feedback while we ship.</p>
+
+  <h2>What you get</h2>
+  <ul>
+    <li>Early access to builds and features before public release</li>
+    <li>Talking points, screenshots, and product context you can use in your own voice</li>
+    <li>A direct line for bugs, ideas, and “this is confusing on camera” moments</li>
+    <li>Recognition as we grow (we keep track of creators who showed up early)</li>
+    <li>Optional collabs when we run campaigns or want real stories from people who play and post</li>
+  </ul>
+
+  <h2>What we ask</h2>
+  <ul>
+    <li>Use the product the way you would naturally cover it, not a one-off install</li>
+    <li>Tell us what breaks or what viewers would not understand</li>
+    <li>Label sponsored or gifted access clearly when you post</li>
+    <li>Keep confidential builds private until we say otherwise</li>
+  </ul>
+</div>
+
+<div class="legal-prose" style="margin-top: 48px;">
+  <h2>Apply</h2>
+  <p>Tell us who you are and how you create. Your email app will open with everything filled in. You need a configured mail client on this device.</p>
+</div>
+
+<form id="creator-apply-form" class="form-stack">
+  <div class="form-field">
+    <label for="cr-name">Name</label>
+    <input type="text" id="cr-name" name="name" required autocomplete="name" placeholder="Your full name">
+  </div>
+  <div class="form-field">
+    <label for="cr-email">Email</label>
+    <input type="email" id="cr-email" name="email" required autocomplete="email" placeholder="you@example.com">
+  </div>
+  <div class="form-field">
+    <label for="cr-social">Social handles</label>
+    <textarea id="cr-social" name="social" required placeholder="Where we can find you (e.g. @you on Instagram, TikTok, YouTube channel link, etc.)" rows="3"></textarea>
+  </div>
+  <div class="form-field">
+    <label for="cr-subject">Subject</label>
+    <input type="text" id="cr-subject" name="subject" required placeholder="Short summary of your application">
+  </div>
+  <div class="form-field">
+    <label for="cr-message">Message</label>
+    <textarea id="cr-message" name="message" required placeholder="What kind of golf content you make, audience size if you want to share it, and how you might cover Offcourse." rows="6"></textarea>
+  </div>
+  <button type="submit" class="btn-submit">Send application</button>
+</form>
+<p class="form-note-bottom">We read every application. We add creators in waves as we can support them well.</p>
+
+<script>
+(function () {
+  var form = document.getElementById('creator-apply-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('cr-name').value.trim();
+    var email = document.getElementById('cr-email').value.trim();
+    var social = document.getElementById('cr-social').value.trim();
+    var subject = document.getElementById('cr-subject').value.trim();
+    var message = document.getElementById('cr-message').value.trim();
+    var body = 'Creator program application (Offcourse marketing site)\n\n';
+    body += 'Name: ' + name + '\n';
+    body += 'Email: ' + email + '\n';
+    body += 'Social handles:\n' + social + '\n\n';
+    body += message;
+    window.location.href = 'mailto:hello@tryoffcourse.app?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>

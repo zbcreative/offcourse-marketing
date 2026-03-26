@@ -1,0 +1,4 @@
+node_modules/
+# Legacy output folder (older builds); site now builds to docs/
+_site/
+.DS_Store

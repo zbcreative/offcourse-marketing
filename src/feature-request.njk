@@ -1,0 +1,61 @@
+---
+layout: layouts/base.njk
+title: "Feature request | Help shape the Offcourse golf app"
+description: "Suggest features for Offcourse, the golf practice app for tracking range sessions, drills, and training. Your email client opens with the details you submit."
+permalink: /feature-request/index.html
+canonicalUrl: "https://offcourse.app/feature-request/"
+---
+
+<h1 class="page-title">Feature request</h1>
+<p class="page-intro">If you have an idea, we want to read it. Submit the form below and your mail app will open with everything included. You need a configured email client on this device.</p>
+
+<form id="feature-form" class="form-stack">
+  <div class="form-field">
+    <label for="fr-name">Name (optional)</label>
+    <input type="text" id="fr-name" name="name" autocomplete="name">
+  </div>
+  <div class="form-field">
+    <label for="fr-email">Email</label>
+    <input type="email" id="fr-email" name="email" required autocomplete="email">
+  </div>
+  <div class="form-field">
+    <label for="fr-area">Area</label>
+    <select id="fr-area" name="area" required>
+      <option value="">Choose one</option>
+      <option value="Range / session logging">Range / session logging</option>
+      <option value="Drills / library">Drills / library</option>
+      <option value="XP / tiers / badges">XP / tiers / badges</option>
+      <option value="Leaderboard / challenges">Leaderboard / challenges</option>
+      <option value="Stats / insights">Stats / insights</option>
+      <option value="Account / settings">Account / settings</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div class="form-field">
+    <label for="fr-detail">What should we build or change?</label>
+    <textarea id="fr-detail" name="detail" required placeholder="Be specific. What problem does this solve?"></textarea>
+  </div>
+  <button type="submit" class="btn-submit">Open email</button>
+</form>
+<p class="form-note-bottom">We read these messages. We cannot reply to every idea, but they feed our roadmap.</p>
+
+<script>
+(function () {
+  var form = document.getElementById('feature-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('fr-name').value.trim();
+    var email = document.getElementById('fr-email').value.trim();
+    var area = document.getElementById('fr-area').value;
+    var detail = document.getElementById('fr-detail').value.trim();
+    var body = 'Feature request for Offcourse\n\n';
+    if (name) body += 'Name: ' + name + '\n';
+    body += 'Email: ' + email + '\n';
+    body += 'Area: ' + area + '\n\n';
+    body += detail;
+    var subject = 'Feature request: ' + area;
+    window.location.href = 'mailto:hello@tryoffcourse.app?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>

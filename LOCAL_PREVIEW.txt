@@ -1,0 +1,15 @@
+LOCAL PREVIEW (read this)
+
+The built homepage is here ONLY:
+
+  docs\index.html
+
+Eleventy writes every page under the "docs" folder. There is no "_site" folder anymore.
+
+If you edit files under "src", run:
+
+  npm run build
+
+...then refresh docs\index.html in your browser (or use: npm run serve).
+
+Do not open src\*.njk in the browser; those are templates, not the final page.
