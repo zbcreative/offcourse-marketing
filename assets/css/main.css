@@ -1654,6 +1654,12 @@ footer {
 
 .post-content p { margin-bottom: 16px; }
 
+.post-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
 .post-content ul,
 .post-content ol {
   margin: 0 0 16px 1.25em;
