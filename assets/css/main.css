@@ -469,6 +469,60 @@ h1 .tagline {
   letter-spacing: 0.08em;
 }
 
+/* Feature bento (compact capability grid under #features intro) */
+section.feature-bento-section {
+  padding: 0 24px 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.feature-bento-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 20px 22px;
+  scroll-margin-top: 96px;
+}
+
+.feature-bento-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.feature-bento-desc {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .feature-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .feature-bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section.feature-bento-section {
+    padding-bottom: 48px;
+  }
+}
+
 /* ── SECTIONS ── */
 section {
   padding: 100px 24px;
@@ -563,6 +617,10 @@ section {
   padding: 6px 16px 12px;
   height: 420px;
   overflow: hidden;
+}
+
+.full-phone-content.full-phone-content--stats {
+  height: 448px;
 }
 
 /* Screen sections */
