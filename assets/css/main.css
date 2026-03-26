@@ -19,7 +19,7 @@
   color: var(--green-bright);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   background: var(--bg);
@@ -1700,32 +1700,151 @@ footer {
   font-size: 16px;
 }
 
-@media (max-width: 1100px) {
+/* ── HAMBURGER BUTTON ── */
+.nav-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-hamburger:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: var(--border2);
+}
+.nav-hamburger:focus-visible {
+  outline: 2px solid var(--green-bright);
+  outline-offset: 3px;
+}
+.nav-hamburger .icon-close { display: none; }
+
+/* ── MOBILE NAV — compact bar with hamburger ── */
+@media (max-width: 900px) {
   .site-nav {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    row-gap: 12px;
-    padding: 14px 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    padding: 0 20px;
+    row-gap: 0;
+    grid-template-columns: unset;
   }
-  .nav-logo { justify-self: center; }
-  .nav-center {
-    justify-self: center;
-    max-width: 100%;
-    row-gap: 8px;
+  .nav-logo { justify-self: unset; }
+  .nav-center { display: none; }
+  .nav-end { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ── MOBILE MENU OPEN STATE ── */
+body.nav-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  body.nav-open .site-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 62px auto 1fr;
+    grid-template-areas:
+      "logo hamburger"
+      "center center"
+      "end end";
+    align-items: start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(10,14,11,0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 0 24px 48px;
+    z-index: 200;
   }
-  .nav-end {
-    justify-self: center;
-    justify-content: center;
+
+  body.nav-open .nav-logo {
+    grid-area: logo;
+    align-self: center;
+  }
+
+  body.nav-open .nav-hamburger {
+    grid-area: hamburger;
+    align-self: center;
+  }
+
+  body.nav-open .nav-hamburger .icon-hamburger { display: none; }
+  body.nav-open .nav-hamburger .icon-close { display: block; }
+
+  body.nav-open .nav-center {
+    grid-area: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
     width: 100%;
+    padding-top: 4px;
+  }
+
+  body.nav-open .nav-center a {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-2);
+    padding: 18px 0;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    white-space: normal;
+  }
+
+  body.nav-open .nav-center a:last-child { border-bottom: none; }
+  body.nav-open .nav-center a:hover { color: var(--green-bright); }
+
+  body.nav-open .nav-end {
+    grid-area: end;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    padding-top: 24px;
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  body.nav-open .nav-social { justify-content: flex-start; }
+
+  body.nav-open .nav-social-link {
+    width: 44px;
+    height: 44px;
+  }
+
+  body.nav-open .nav-store-btn {
+    font-size: 15px;
+    padding: 14px 20px;
+    text-align: center;
+    border-radius: 14px;
+  }
+
+  body.nav-open .nav-cta {
+    font-size: 16px;
+    padding: 16px 22px;
+    text-align: center;
+    border-radius: 14px;
   }
 }
 
-@media (max-width: 520px) {
-  .nav-center { gap: 10px 14px; }
-  .nav-center a { font-size: 12px; }
-  .nav-store-btn {
-    font-size: 10px;
-    padding: 7px 10px;
-  }
-  .nav-cta { font-size: 13px; padding: 9px 16px; }
+/* ── MOBILE CONTENT PADDING FIX (shorter nav on mobile) ── */
+@media (max-width: 900px) {
+  .hero { padding-top: 90px; }
+  .page-shell { padding-top: 90px; }
 }
