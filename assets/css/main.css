@@ -1757,25 +1757,36 @@ footer {
 body:has(#site-nav-toggle:checked) { overflow: hidden; }
 
 @media (max-width: 900px) {
+  /* Open menu must override closed .site-nav { height: 62px } or the bar stays one row tall */
   #site-nav-toggle:checked + .site-nav {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
+    width: 100%;
+    min-width: 100%;
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-rows: 62px auto 1fr;
+    grid-template-rows: minmax(62px, auto) auto 1fr;
     grid-template-areas:
       "logo hamburger"
       "center center"
       "end end";
     align-items: start;
+    align-content: start;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     background: rgba(10,14,11,0.98);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    padding: 0 24px 48px;
-    z-index: 200;
+    padding: env(safe-area-inset-top, 0) 24px max(48px, env(safe-area-inset-bottom, 0)) 24px;
+    z-index: 10000;
+    isolation: isolate;
+    box-sizing: border-box;
   }
 
   #site-nav-toggle:checked + .site-nav .nav-logo {
