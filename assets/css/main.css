@@ -19,7 +19,7 @@
   color: var(--green-bright);
 }
 
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
@@ -28,6 +28,8 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100vw;
 }
 
 /* ── NOISE TEXTURE OVERLAY ── */
@@ -55,6 +57,9 @@ body::before {
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255,255,255,0.04);
   transition: padding 0.3s ease;
+  pointer-events: auto;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .nav-logo {
@@ -1714,6 +1719,9 @@ footer {
   cursor: pointer;
   padding: 0;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  touch-action: manipulation;
   transition: background 0.2s ease, border-color 0.2s ease;
   -webkit-tap-highlight-color: transparent;
 }
